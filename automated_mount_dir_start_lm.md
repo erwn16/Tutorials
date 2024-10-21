@@ -31,44 +31,45 @@ In order to restrict the length of this tutorial, the explanations have been lim
 1. Prepare the NAS and LM  
    For mounting NAS-directories the file sharing protocol Server Message Block (SMB) is recommended because it is widely supported across Windows, Linux, and macOS, making it versatile for mixed environments. Others advantages are better security features, including encryption and authentication methods and a rich feature set. Disadvantages of this service are the bigger overhead than other file sharing protocols, which may impact performance in certain scenarios, a more complex configuration, especially when integrating with non-Windows systems, and firewall issues due to multiple ports being used.
 
-   In LM the usage of SMB requires installed packages samba, cifs-utils and smbclient. To verify that these packages are installed type in the terminal: dpkg -l | grep samba, dpkg -l | grep cifs-utils, dpkg -l | grep smbclient
+   In LM the usage of SMB requires installed packages samba, cifs-utils and smbclient. To verify that these packages are installed type in the terminal: dpkg -l | grep samba, dpkg -l | grep cifs-utils, dpkg -l | grep smbclient  
    These commands will show the versions and installation status of the respective packages. If nothing is returned, the respective package is not installed.
 
    You should use the latest versions of SMB that are supported by LM and your NAS because of improved functionality and security mechanisms.
 2. Create a protected file with user login data  
-   Create the file: /etc/samba/credentials: sudo xed /etc/samba/credentials
-   Add login data:
-   username=your_username
+   Create the file: /etc/samba/credentials: sudo xed /etc/samba/credentials  
+   Add login data:  
+   username=your_username  
    password=your_password
 
-   Save the file and protect it: sudo chmod 600 /etc/samba/credentials
+   Save the file and protect it: sudo chmod 600 /etc/samba/credentials  
    "chmod 600" sets file permissions so that only the owner can read and write the file. This will be sufficient for a protected LAN.
 3. Backup and enhance "fstab"  
-   In the terminal: sudo cp /etc/fstab /etc/fstab.bak
+   In the terminal: sudo cp /etc/fstab /etc/fstab.bak  
    The file fstab (located at /etc) is a configuration file that defines how disk partitions, devices, and other file systems are mounted into the filesystem structure. It specifies the device name, mount point, file system type, mount options, dump options, and pass number for file system checks.
 
-   Open the existing fstab with privileged rights in xed: sudo xed /etc/fstab
-   Add a comment at the end of fstab like: # user defined NAS mappings
-   Mount a NAS-directory: //192.168.XXX.YYY/NAS_directory /mnt/NAS/NAS_directory cifs credentials=/etc/samba/credentials,iocharset=utf8,vers=3.0,uid=your_username,gid=your_username, file_mode=0777,dir_mode=0777,nounix 0 0
+   Open the existing fstab with privileged rights in xed: sudo xed /etc/fstab  
+   Add a comment at the end of fstab like: # user defined NAS mappings  
+   Mount a NAS-directory: //192.168.XXX.YYY/NAS_directory /mnt/NAS/NAS_directory cifs credentials=/etc/samba/credentials,iocharset=utf8,vers=3.0,uid=your_username,gid=your_username, file_mode=0777,dir_mode=0777,nounix 0 0  
    Save fstab in xed.
 
    Start with one directory to verify the new mounting process and firstly set all user privileges.
    The mount options file_mode / dir_mode=0777 in fstab set the file and directory permissions when mounting a SMB share. It means full read, write, and execute permissions for the owner, group, and others.
 4. Create a mount directory in LM  
-   Create the needed directory on LM: sudo mkdir -p /mnt/LM-directory
-   "/mnt/..." is chosen for the mapping because it is traditionally used for temporarily mounting filesystems by the system administrator. Opposed to that the directory "/media/..." is used for automatically mounting removable media (like USB drives, CDs, etc.) by desktop environments and utilities. Mounted directories on "/media/..." are displayed on the desktop of LM.
+   Create the needed directory on LM: sudo mkdir -p /mnt/LM-directory  
+   "/mnt/..." is chosen for the mapping because it is traditionally used for temporarily mounting filesystems by the system administrator. Opposed to that the directory "/media/..." is used for automatically mounting removable media (like USB drives, CDs, etc.) by desktop environments and utilities. Mounted directories on "/media/..." are displayed on the desktop of LM.  
 5. Test the enhanced "/etc/fstab"  
-   Check the fstab on syntax errors: sudo mount -aAfter activating the command no error message should appear and the respective NAS directory should be mounted.
-   Verify the correct mounting: df -h
+   Check the fstab on syntax errors: sudo mount -a  
+   After activating the command no error message should appear and the respective NAS directory should be mounted.
+   Verify the correct mounting: df -h  
    The command before lists all mounted file systems - inclusive the mounted NAS-directory.
-   Check the user rights of the mounted directory: ls -l /mnt/NAS_directory
-   Open some documents of the mounted directory / directories to check the file permissions: creating / deleating / reading / renaming / writing.
+   Check the user rights of the mounted directory: ls -l /mnt/NAS_directory  
+   Open some documents of the mounted directory / directories to check the file permissions: creating / deleating / reading / renaming / writing.  
    User rights are mainly defined with the help of the NAS operating system. Some NAS operating systems offer the option to use the standard UNIX user rights which isn't useful because these rights represent only simple alternatives.
-6. Possible issues - Troubleshooting  
-   Linux Mint, NAS and Router: Firewall(s) block(s) connections between the NAS and LM
+6. Troubleshooting - possible issues  
+   Linux Mint, NAS and Router: Firewall(s) block(s) connections between the NAS and LM  
    Firstly disable the firewalls of LM and the NAS. Continue the tests, in case of success enable them to find out where the necessary modifications have to be done.
 7. Post processing  
-   Observe for a few days the established process, edit files of the first mounted directory for all of your typical use cases and adapt the necessary user privileges by adapting the the command in fstab if necessary.
+   Observe for a few days the established process, edit files of the first mounted directory for all of your typical use cases and adapt the necessary user privileges by adapting the the command in fstab if necessary.  
    If the access rights cover all of your use cases mount additional directories by appending similar commands in fstab.
 8. Usage of alternative file services  
     1. **NFS (Network File System)**  
