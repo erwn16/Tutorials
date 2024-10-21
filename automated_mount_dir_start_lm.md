@@ -1,6 +1,6 @@
 ## Automated mounting of NAS-directories during the start of Linux Mint
 
-**Content**
+**Content**  
 How to mount NAS-directories (NAS: network attached storage) during the start of your operating system like Linux Mint (LM) in a local area network (LAN) to a specified subdirectory "/mnt/NAS/NAS_directory" of LM.
 
 **Acknowledgement**
