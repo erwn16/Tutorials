@@ -28,7 +28,7 @@ In order to restrict the length of this tutorial, the explanations have been lim
 
 **Steps in detail**
 
-1. Prepare the NAS and LM
+1. Prepare the NAS and LM  
    For mounting NAS-directories the file sharing protocol Server Message Block (SMB) is recommended because it is widely supported across Windows, Linux, and macOS, making it versatile for mixed environments. Others advantages are better security features, including encryption and authentication methods and a rich feature set. Disadvantages of this service are the bigger overhead than other file sharing protocols, which may impact performance in certain scenarios, a more complex configuration, especially when integrating with non-Windows systems, and firewall issues due to multiple ports being used.
 
    In LM the usage of SMB requires installed packages samba, cifs-utils and smbclient. To verify that these packages are installed type in the terminal: dpkg -l | grep samba, dpkg -l | grep cifs-utils, dpkg -l | grep smbclient
