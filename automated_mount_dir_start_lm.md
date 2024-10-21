@@ -71,11 +71,11 @@ In order to restrict the length of this tutorial, the explanations have been lim
    Observe for a few days the established process, edit files of the first mounted directory for all of your typical use cases and adapt the necessary user privileges by adapting the the command in fstab if necessary.
    If the access rights cover all of your use cases mount additional directories by appending similar commands in fstab.
 8. Usage of alternative file services  
-**NFS (Network File System)**  
+    1. **NFS (Network File System)**  
 NFS is a distributed file system protocol originally developed for Unix/Linux systems, allowing remote access to files over a network as if they were local. A lot of Internet sources mention that NFS seems to be faster depending on the sizes and number of files to be shared. The main disadvantages are that it is less secure by default compared to SMB, it requires a careful configuration to ensure security, it possesses a limited native support on non-Unix systems, although clients exist, and it can be complex to set up properly in heterogeneous environments.
 Although the NFS service is masked in LM nevertheless a mounting of NAS directories on the basis of NFS works.  
 In LM open a terminal and check whether NFS is installed: dpkg -l | grep nfs  
 Mount a NAS-directory in fstab: //NAS-IP/NAS_directory /mnt/NAS_directory nfs rw,noatime,nfsvers=4.1 0 0  
-**WebDAV (Web Distributed Authoring and Versioning)** - for the sake of completeness, not tested  
+    2. **WebDAV (Web Distributed Authoring and Versioning)** - for the sake of completeness, not tested  
 It is an extension of the HTTP protocol that allows users to collaboratively edit and manage files on remote Web-servers. It provides a way to access files over the Web in a manner similar to local file systems. You should use it when your data are located on a Web-server. One advantage is that it works with Web-servers and can be accessed from various operating systems and devices. Disadvantages are that it can be slower than NFS or SMB, and it requires a proper configuration for secure access (e.g. using HTTPS) to avoid vulnerabilities.  
 For mounting NAS directories in LM you typically need a WebDAV-client provided by the respective package "davfs2" or using the built-in file manager with WebDAV support. Similar to SMB there is a need for access credentials like a username and password if the WebDAV-server requires authentication. The mount point in LM may be a local directory where the WebDAV share will be mounted (e.g. "/mnt/webdav").
