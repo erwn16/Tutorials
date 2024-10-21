@@ -3,13 +3,13 @@
 **Content**  
 How to mount NAS-directories (NAS: network attached storage) during the start of your operating system like Linux Mint (LM) in a local area network (LAN) to a specified subdirectory "/mnt/NAS/NAS_directory" of LM.
 
-**Acknowledgement**
+**Acknowledgement**  
 Most parts of the sources for this tutorial were generated in multiple sessions with the assistance of ChatGPT, an AI language model developed by OpenAI. Contributions of ChatGPT were modified due to didactic reasons.
 
-**Disclaimer**
+**Disclaimer**  
 The author is responsible for the contents of this tutorial but not for data losses or corruption of your LM due to the application of this tutorial. Assistance for the usage of this tutorial can't be provided due to missing capacities.
 
-**Preliminary remarks**
+**Preliminary remarks**  
 The described process below works only when the NAS is in operation and accessible at the start of LM.
 The commands below are performed via the terminal of LM, exceptions are explicitly mentioned.
 The mounting of a NAS directory in a protected private network is chosen to avoid security issues and recommended for users without experience in this area - "from simple to difficult".
