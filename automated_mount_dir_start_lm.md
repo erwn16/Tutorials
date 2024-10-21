@@ -70,13 +70,13 @@ In order to restrict the length of this tutorial, the explanations have been lim
 7. Post processing  
    Observe for a few days the established process, edit files of the first mounted directory for all of your typical use cases and adapt the necessary user privileges by adapting the the command in fstab if necessary.
    If the access rights cover all of your use cases mount additional directories by appending similar commands in fstab.
-8. Usage of alternative file services  
+8. Usage of alternative file services    
 
 **NFS (Network File System)**
 NFS is a distributed file system protocol originally developed for Unix/Linux systems, allowing remote access to files over a network as if they were local. A lot of Internet sources mention that NFS seems to be faster depending on the sizes and number of files to be shared. The main disadvantages are that it is less secure by default compared to SMB, it requires a careful configuration to ensure security, it possesses a limited native support on non-Unix systems, although clients exist, and it can be complex to set up properly in heterogeneous environments.
 Although the NFS service is masked in LM nevertheless a mounting of NAS directories on the basis of NFS works.
 
-In LM open a terminal and check whether NFS is installed: dpkg -l | grep nfs
+In LM open a terminal and check whether NFS is installed: dpkg -l | grep nfs  
 Mount a NAS-directory in fstab: //NAS-IP/NAS_directory /mnt/NAS_directory nfs rw,noatime,nfsvers=4.1 0 0
 
 **WebDAV (Web Distributed Authoring and Versioning)** - for the sake of completeness, not tested
