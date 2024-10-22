@@ -70,8 +70,11 @@ In order to restrict the length of this tutorial, the explanations have been lim
    Firstly disable the firewalls of LM and the NAS. Continue the tests, in case of success enable them to find out where the necessary modifications have to be done.
 7. Post processing  
    Observe for a few days the established process, edit files of the first mounted directory for all of your typical use cases and adapt the necessary user privileges by adapting the the command in fstab if necessary.  
-   If the access rights cover all of your use cases mount additional directories by appending similar commands in fstab.
-8. Usage of alternative file services  
+   If the access rights cover all of your use cases mount additional directories by appending similar commands in fstab.  
+   Optional:
+   Create in Nemo of LM a subdirectory "NAS" of your home directory and set a bookmark on this subdirectory so that it will be displayed in the left sidebar of Nemo in the section "Bookmarks".
+   Navigate to this subdirectory and create a symlink to the mounted NAS_directory of your NAS: ln -s /mnt/NAS_directory/NAS_subdirectory ~/NAS  
+9. Usage of alternative file services  
     1. **NFS (Network File System)**  
 NFS is a distributed file system protocol originally developed for Unix/Linux systems, allowing remote access to files over a network as if they were local. A lot of Internet sources mention that NFS seems to be faster depending on the sizes and number of files to be shared. The main disadvantages are that it is less secure by default compared to SMB, it requires a careful configuration to ensure security, it possesses a limited native support on non-Unix systems, although clients exist, and it can be complex to set up properly in heterogeneous environments.
 Although the NFS service is masked in LM nevertheless a mounting of NAS directories on the basis of NFS works.  
