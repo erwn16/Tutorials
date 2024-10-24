@@ -10,10 +10,10 @@ Most parts of the sources for this tutorial were generated in multiple sessions 
 The author is responsible for the contents of this tutorial but not for data losses or corruption of your LM due to the application of this tutorial. Assistance for the usage of this tutorial can't be provided due to missing capacities.
 
 **Preliminary remarks**  
-The described process below works only when the NAS is in operation and accessible at the start of LM.
-The commands below are performed via the terminal of LM, exceptions are explicitly mentioned.
-The mounting of a NAS directory in a protected private network is chosen to avoid security issues and recommended for users without experience in this area - "from simple to difficult".
-In order to restrict the length of this tutorial, the explanations have been limited to the necessary steps.
++ The described process below works only when the NAS is in operation and accessible at the start of LM.  
++ The commands below are performed via the terminal of LM, exceptions are explicitly mentioned.  
++ The mounting of a NAS directory in a protected private network is chosen to avoid security issues and recommended for users without experience in this area - "from simple to difficult".  
++ In order to restrict the length of this tutorial, the explanations have been limited to the necessary steps.
 
 **Steps - Overview**
 
